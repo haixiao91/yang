@@ -1,16 +1,382 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#6C5CE7" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <title>羊了个羊 - 堆叠三消</title>
-    <script type="module" crossorigin src="/yang/assets/index-COf487VW.js"></script>
-    <link rel="stylesheet" crossorigin href="/yang/assets/index-D5MJuGiR.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>君通智库 - Juntong ThinkTank Platform</title>
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="page-layout">
+
+    <!-- ========== 侧边栏 ========== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">JT</div>
+        <span class="logo-text">君通智库</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- 概览 -->
+        <div class="nav-section">
+          <div class="nav-section-title">概览</div>
+          <div class="nav-item active" data-menu="home">
+            <i class="nav-icon fas fa-home"></i>
+            <span class="nav-text">工作台</span>
+          </div>
+          <div class="nav-item" data-menu="dashboard">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <span class="nav-text">数据看板</span>
+          </div>
+        </div>
+
+        <!-- 核心模块 -->
+        <div class="nav-section">
+          <div class="nav-section-title">核心模块</div>
+          <div class="nav-item has-sub">
+            <i class="nav-icon fas fa-briefcase"></i>
+            <span class="nav-text">君通案例</span>
+            <i class="nav-arrow fas fa-chevron-right"></i>
+          </div>
+          <div class="nav-submenu">
+            <div class="nav-item" data-menu="case-web"><span class="nav-text">建站案例</span></div>
+            <div class="nav-item" data-menu="case-mini"><span class="nav-text">小程序案例</span></div>
+            <div class="nav-item" data-menu="case-video"><span class="nav-text">短视频案例</span></div>
+            <div class="nav-item" data-menu="case-film"><span class="nav-text">宣传片案例</span></div>
+          </div>
+          <div class="nav-item has-sub">
+            <i class="nav-icon fas fa-photo-film"></i>
+            <span class="nav-text">资源素材</span>
+            <i class="nav-arrow fas fa-chevron-right"></i>
+          </div>
+          <div class="nav-submenu">
+            <div class="nav-item" data-menu="res-bg"><span class="nav-text">背景图片</span></div>
+            <div class="nav-item" data-menu="res-png"><span class="nav-text">免扣元素</span></div>
+            <div class="nav-item" data-menu="res-video"><span class="nav-text">视频素材</span></div>
+          </div>
+          <div class="nav-item has-sub">
+            <i class="nav-icon fas fa-code"></i>
+            <span class="nav-text">前端模块</span>
+            <i class="nav-arrow fas fa-chevron-right"></i>
+          </div>
+          <div class="nav-submenu">
+            <div class="nav-item" data-menu="mod-home"><span class="nav-text">首页模块</span></div>
+            <div class="nav-item" data-menu="mod-article-list"><span class="nav-text">文章列表模块</span></div>
+            <div class="nav-item" data-menu="mod-article-detail"><span class="nav-text">文章详情模块</span></div>
+            <div class="nav-item" data-menu="mod-product-list"><span class="nav-text">产品列表模块</span></div>
+            <div class="nav-item" data-menu="mod-product-detail"><span class="nav-text">产品详情模块</span></div>
+            <div class="nav-item" data-menu="mod-timeline"><span class="nav-text">发展历程模块</span></div>
+            <div class="nav-item" data-menu="mod-honor"><span class="nav-text">企业荣誉模块</span></div>
+            <div class="nav-item" data-menu="mod-contact"><span class="nav-text">联系方式模块</span></div>
+          </div>
+          <div class="nav-item has-sub">
+            <i class="nav-icon fas fa-robot"></i>
+            <span class="nav-text">智能工具</span>
+            <i class="nav-arrow fas fa-chevron-right"></i>
+          </div>
+          <div class="nav-submenu">
+            <div class="nav-item" data-menu="ai-write"><span class="nav-text">AI文案生成</span></div>
+            <div class="nav-item" data-menu="ai-image"><span class="nav-text">AI图片处理</span></div>
+            <div class="nav-item" data-menu="ai-code"><span class="nav-text">AI代码助手</span></div>
+          </div>
+        </div>
+
+        <!-- 系统 -->
+        <div class="nav-section">
+          <div class="nav-section-title">系统</div>
+          <div class="nav-item" data-menu="settings">
+            <i class="nav-icon fas fa-cog"></i>
+            <span class="nav-text">系统设置</span>
+          </div>
+          <div class="nav-item" data-menu="users">
+            <i class="nav-icon fas fa-users-cog"></i>
+            <span class="nav-text">用户管理</span>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-collapse-btn" id="sidebarToggle">
+          <i class="fas fa-angle-left"></i>
+          <span class="nav-text">收起侧边栏</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ========== 主内容区 ========== -->
+    <main class="main-content" id="mainContent">
+
+      <!-- 顶部栏 -->
+      <header class="topbar">
+        <div class="topbar-search">
+          <i class="search-icon fas fa-search"></i>
+          <input type="text" placeholder="搜索案例、素材、模块..." autocomplete="off">
+        </div>
+        <div class="topbar-actions">
+          <button class="topbar-icon-btn" data-tip="消息" id="btnNotify">
+            <i class="fas fa-bell"></i>
+            <span class="badge"></span>
+          </button>
+          <button class="topbar-icon-btn" data-tip="全屏" id="btnFullscreen">
+            <i class="fas fa-expand"></i>
+          </button>
+          <div class="topbar-user" id="userMenu">
+            <div class="topbar-avatar">管理员</div>
+            <span style="font-size:13px;color:#A0A0A0;">Admin</span>
+            <i class="fas fa-chevron-down" style="font-size:10px;color:#666;"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- 页面主体 -->
+      <div class="page-body">
+
+        <!-- ========== Hero Banner ========== -->
+        <section class="hero-section" data-animate>
+          <div class="hero-eyebrow">
+            <i class="fas fa-star" style="font-size:10px;"></i>
+            企业内部资源中枢 &amp; 知识管理平台
+          </div>
+          <h1 class="hero-title">
+            君通<span class="accent">智库</span>平台
+          </h1>
+          <p class="hero-subtitle">
+            汇聚案例、素材、模块、AI工具于一体的综合性资源平台<br>
+            提升协作效率，助力业务拓展
+          </p>
+          <div class="hero-actions">
+            <a href="#module-section" class="btn btn-primary">
+              <i class="fas fa-compass"></i> 开始探索
+            </a>
+            <a href="#cases-section" class="btn btn-secondary">
+              <i class="fas fa-play-circle"></i> 精选案例
+            </a>
+          </div>
+        </section>
+
+        <!-- ========== 数据统计 ========== -->
+        <section class="stats-section" data-animate>
+          <div class="stat-card">
+            <div class="stat-number" data-value="326">0</div>
+            <div class="stat-label">精选案例</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-value="1580">0</div>
+            <div class="stat-label">优质素材</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-value="86">0</div>
+            <div class="stat-label">前端模块</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-value="12">0</div>
+            <div class="stat-label">AI 工具</div>
+          </div>
+        </section>
+
+        <!-- ========== 模块导航 ========== -->
+        <section class="module-section" id="module-section" data-animate>
+          <div class="section-header">
+            <h2 class="section-title">核心模块</h2>
+            <a href="#" class="section-more">查看全部 <i class="fas fa-arrow-right" style="font-size:11px;"></i></a>
+          </div>
+          <div class="module-grid">
+            <div class="module-card" data-href="#cases-section">
+              <div class="module-icon">
+                <span class="icon">💼</span>
+              </div>
+              <div class="module-name">君通案例</div>
+              <div class="module-desc">建站、小程序、短视频、宣传片等全类型项目案例展示</div>
+              <div class="module-count"><span>326</span> 个案例</div>
+            </div>
+            <div class="module-card" data-href="#">
+              <div class="module-icon">
+                <span class="icon">🎨</span>
+              </div>
+              <div class="module-name">资源素材</div>
+              <div class="module-desc">高清背景图、免扣元素、视频素材一站式获取</div>
+              <div class="module-count"><span>1580</span> 个素材</div>
+            </div>
+            <div class="module-card" data-href="#">
+              <div class="module-icon">
+                <span class="icon">🧩</span>
+              </div>
+              <div class="module-name">前端模块</div>
+              <div class="module-desc">首页、文章、产品、历程等标准化组件模块</div>
+              <div class="module-count"><span>86</span> 个模块</div>
+            </div>
+            <div class="module-card" data-href="#tools-section">
+              <div class="module-icon">
+                <span class="icon">🤖</span>
+              </div>
+              <div class="module-name">智能工具</div>
+              <div class="module-desc">AI 文案生成、图片处理、代码助手提效工具</div>
+              <div class="module-count"><span>12</span> 个工具</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== 精选案例 ========== -->
+        <section class="cases-section" id="cases-section" data-animate>
+          <div class="section-header">
+            <h2 class="section-title">精选案例</h2>
+            <a href="#" class="section-more">更多案例 <i class="fas fa-arrow-right" style="font-size:11px;"></i></a>
+          </div>
+          <div class="cases-grid">
+            <div class="case-card">
+              <div class="case-thumb">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="企业官网">
+                <div class="case-tags">
+                  <span class="case-tag hot">热门</span>
+                  <span class="case-tag type">企业官网</span>
+                </div>
+              </div>
+              <div class="case-info">
+                <div class="case-title">医疗器械集团企业官网</div>
+                <div class="case-meta">
+                  <span>建站案例</span>
+                  <span>2026.04</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-thumb">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="小程序">
+                <div class="case-tags">
+                  <span class="case-tag new">新增</span>
+                  <span class="case-tag type">小程序</span>
+                </div>
+              </div>
+              <div class="case-info">
+                <div class="case-title">连锁餐饮点餐小程序</div>
+                <div class="case-meta">
+                  <span>小程序案例</span>
+                  <span>2026.03</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-thumb">
+                <img src="https://images.unsplash.com/photo-1576267423048-15c0040fec78?w=600&q=80" alt="宣传片">
+                <div class="case-tags">
+                  <span class="case-tag hot">热门</span>
+                  <span class="case-tag type">宣传片</span>
+                </div>
+              </div>
+              <div class="case-info">
+                <div class="case-title">科技公司年度品牌宣传片</div>
+                <div class="case-meta">
+                  <span>宣传片案例</span>
+                  <span>2026.02</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-thumb">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="数据大屏">
+                <div class="case-tags">
+                  <span class="case-tag type">建站案例</span>
+                </div>
+              </div>
+              <div class="case-info">
+                <div class="case-title">智慧园区数据可视化大屏</div>
+                <div class="case-meta">
+                  <span>建站案例</span>
+                  <span>2026.01</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-thumb">
+                <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=80" alt="短视频">
+                <div class="case-tags">
+                  <span class="case-tag new">新增</span>
+                  <span class="case-tag type">短视频</span>
+                </div>
+              </div>
+              <div class="case-info">
+                <div class="case-title">新能源汽车产品展示短视频</div>
+                <div class="case-meta">
+                  <span>短视频案例</span>
+                  <span>2026.03</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-thumb">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80" alt="品牌站">
+                <div class="case-tags">
+                  <span class="case-tag hot">热门</span>
+                  <span class="case-tag type">品牌站</span>
+                </div>
+              </div>
+              <div class="case-info">
+                <div class="case-title">新锐消费品牌官网设计</div>
+                <div class="case-meta">
+                  <span>建站案例</span>
+                  <span>2026.04</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== AI 智能工具 ========== -->
+        <section class="tools-section" id="tools-section" data-animate>
+          <div class="section-header">
+            <h2 class="section-title">AI 智能工具</h2>
+            <a href="#" class="section-more">全部工具 <i class="fas fa-arrow-right" style="font-size:11px;"></i></a>
+          </div>
+          <div class="tools-grid">
+            <div class="tool-card">
+              <div class="tool-icon ai-write">✍️</div>
+              <div class="tool-info">
+                <div class="tool-name">AI 文案生成</div>
+                <div class="tool-desc">基于大语言模型，自动生成企业文案、营销内容、社交媒体推文，支持多场景多风格</div>
+              </div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-icon ai-image">🖼️</div>
+              <div class="tool-info">
+                <div class="tool-name">AI 图片处理</div>
+                <div class="tool-desc">智能抠图、图片增强、风格迁移、老照片修复，一键提升图片质量与表现力</div>
+              </div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-icon ai-code">⚡</div>
+              <div class="tool-info">
+                <div class="tool-name">AI 代码助手</div>
+                <div class="tool-desc">前端代码生成、代码优化建议、Bug 检测与修复提示，提升开发效率</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== 页脚 ========== -->
+        <footer class="site-footer">
+          <div class="footer-content">
+            <div class="footer-brand">
+              <span style="font-weight:600;color:#fff;">JT</span>
+              <span style="color:#A0A0A0;margin-left:8px;">君通智库</span>
+            </div>
+            <div class="footer-links">
+              <a href="#">使用帮助</a>
+              <a href="#">意见反馈</a>
+              <a href="#">更新日志</a>
+            </div>
+            <div class="footer-copy">
+              &copy; 2026 君通智库 Juntong ThinkTank · 内部平台 · 仅供员工使用
+            </div>
+          </div>
+        </footer>
+
+      </div><!-- /.page-body -->
+    </main>
+
+  </div><!-- /.page-layout -->
+
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/main.js"></script>
+</body>
 </html>
